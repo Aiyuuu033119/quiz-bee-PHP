@@ -36,7 +36,7 @@ $(document).ready(function () {
 
     var question_list;
     let seconds = 0;
-    var questionPerTime = 4;
+    var questionPerTime = 29;
     var i = 0;
     let timer;
     let right = 0;
@@ -58,6 +58,14 @@ $(document).ready(function () {
 
     //func for time
     function time() {
+
+        if(seconds <= 19){
+            $('.timer-num').css('color','white');
+        }
+        else{
+            $('.timer-num').css('color','#f75454');
+        }
+
         if (seconds <= questionPerTime) {
             ++seconds;
             $('.timer-num').text(seconds);
