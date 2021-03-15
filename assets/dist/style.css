@@ -12,6 +12,10 @@
   padding: 0;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -333,4 +337,88 @@ ul > li {
   font-size: 20px;
   letter-spacing: 2px;
   /* font-size: 32px; */
+}
+
+
+/* new added */
+
+@media screen and (max-width: 540px) {
+  .container .card {
+    width: 90vw;
+  }
+  .choices-a, .choices-b, .choices-c {
+    width: 90%;
+  }
+  h1.question-text {
+    font-size: 20px;
+  }
+  .card > .utils {
+    display: flex;
+    flex-direction: column;
+}
+  .question-label{
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  .count-body > h2{
+    font-size: 18px;
+  }
+  .question-label > h2 {
+    text-align: center;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .modal-body {
+    width: 300px;
+  }
+  .container .card {
+    width: 90vw;
+  }
+  .choices-a, .choices-b, .choices-c {
+    width: 90%;
+  }
+  h1.question-text {
+    font-size: 20px;
+  }
+  .card > .utils {
+    display: flex;
+    flex-direction: column;
+}
+  .question-label{
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+  .count-body > h2{
+    font-size: 18px;
+  }
+  .question-label > h2 {
+    text-align: center;
+    line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .modal-body {
+    width: 300px;
+  }
+  h1.remind-text{
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width: 280px) {
+  h1.leader-text{
+    font-size: 25px;
+  }
+  .modal-body {
+    width: 250px;
+  }
+  h1.remind-text{
+    font-size: 20px;
+  }
+  ul > li {
+    font-size: 15px;
+  }
 }
