@@ -42,7 +42,7 @@
                 '3' => array(
                     'question' => 'Choose the special character that is used to indicate a blank space?',
                     'a' => '/n',
-                    'b' => '$nbsp',
+                    'b' => '&nbsp',
                     'c' => '<br/>',
                     'correct' => 'b'
                 ),
