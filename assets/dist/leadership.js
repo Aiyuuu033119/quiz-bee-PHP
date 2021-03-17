@@ -11,7 +11,7 @@ $(document).ready(function () {
 
         storedScores.forEach((element, index) => {
             if (index <= 3) {
-                html += '<li style="list-style:none; font-size: 30px">' + element.user + ' - ' + element.score + '%</li>';
+                html += '<li style="list-style:none; font-size: 30px;  text-align:center">' + element.user + ' - ' + element.score + '%</li>';
                 return false;
             }
         });
@@ -20,7 +20,7 @@ $(document).ready(function () {
     } else {
         var html = ''
 
-        html += '<li style="list-style:none; font-size: 30px">No User Yet</li>';
+        html += '<li style="list-style:none; font-size: 30px; text-align:center">No User Yet</li>';
 
         $('.list').html(html);
     }

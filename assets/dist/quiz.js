@@ -1,19 +1,21 @@
 $(document).ready(function () {
 
     // async
-    $.ajax({
-        url: "https://quiz-bee-ian.herokuapp.com/index.php?question=1",
-        type: "GET",
-        contentType: false,
-        processData: false,
-        success: function (data) {
-
-            var json = JSON.parse(data);
-            
-            // passing array
-            question_list = chooseRandom(json, 10);
-        }
-    });
+    function async(){
+        $.ajax({
+            url: "https://quiz-bee-ian.herokuapp.com/index.php?question=1",
+            type: "GET",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+    
+                var json = JSON.parse(data);
+                
+                // passing array
+                question_list = chooseRandom(json, 10);
+            }
+        });
+    }
 
     // func for shuffle array 
     const chooseRandom = (json, num = 1) => {
@@ -45,7 +47,7 @@ $(document).ready(function () {
 
     // funtion for modal
     $('.play-btn').on('click', function(){
-
+        async();
         // modal hide
         $('.modal').hide();
         
