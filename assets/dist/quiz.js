@@ -1,21 +1,9 @@
 $(document).ready(function () {
 
-    // async
-    function async(){
-        $.ajax({
-            url: "https://quiz-bee-ian.herokuapp.com/index.php?question=1",
-            type: "GET",
-            contentType: false,
-            processData: false,
-            success: function (data) {
-    
-                var json = JSON.parse(data);
-                
-                // passing array
-                question_list = chooseRandom(json, 10);
-            }
-        });
-    }
+    // // async
+    // function async(){
+
+    // }
 
     // func for shuffle array 
     const chooseRandom = (json, num = 1) => {
@@ -23,10 +11,10 @@ $(document).ready(function () {
         // container for shuffle array 
         const res = [];
 
-        for(let i = 0; i < num; ){
+        for (let i = 0; i < num;) {
 
             const random = Math.floor(Math.random() * json.length);
-            if(res.indexOf(json[random]) !== -1){
+            if (res.indexOf(json[random]) !== -1) {
                 continue;
             };
             res.push(json[random]);
@@ -46,26 +34,42 @@ $(document).ready(function () {
     // $('.count').hide();
 
     // funtion for modal
-    $('.play-btn').on('click', function(){
-        async();
-        // modal hide
-        $('.modal').hide();
-        
-        // displaying question
-        choose(i);
+    $('.play-btn').on('click', function () {
 
-        // start timer
-        count = setInterval(time, 1000)
+        $.ajax({
+            url: "https://quiz-bee-ian.herokuapp.com/index.php?question=1",
+            type: "GET",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+
+                var json = JSON.parse(data);
+
+                // passing array
+                question_list = chooseRandom(json, 10);
+
+                // modal hide
+                $('.modal').hide();
+
+                // displaying question
+                choose(i);
+
+                // start timer
+                count = setInterval(time, 1000)
+            }
+        });
+
+
     });
 
     //func for time
     function time() {
 
-        if(seconds <= 19){
-            $('.timer-num').css('color','white');
+        if (seconds <= 19) {
+            $('.timer-num').css('color', 'white');
         }
-        else{
-            $('.timer-num').css('color','#f75454');
+        else {
+            $('.timer-num').css('color', '#f75454');
         }
 
         if (seconds <= questionPerTime) {
@@ -106,7 +110,7 @@ $(document).ready(function () {
             clearInterval(count);
 
             countAppper(right);
-            
+
 
         } else {
 
@@ -130,7 +134,7 @@ $(document).ready(function () {
 
             // determinig if the correct answer is a
             if (question[num].correct == 'a') {
-                
+
                 // setting data
                 dataRelaying('.choices-a', 'b326b5062b2f0e69046810717534cb09')
 
@@ -143,12 +147,12 @@ $(document).ready(function () {
 
             // determinig if the correct answer is b
             if (question[num].correct == 'b') {
-                
+
                 // setting data
                 dataRelaying('.choices-b', 'b326b5062b2f0e69046810717534cb09')
 
             } else {
-                
+
                 // setting data to empty
                 dataRelaying('.choices-b', '');
             }
@@ -176,7 +180,7 @@ $(document).ready(function () {
 
     // function for displaying question
     function choose(i) {
-        
+
         // apperance of question
         question(question_list, i);
     }
@@ -185,7 +189,7 @@ $(document).ready(function () {
 
         // determinig the if the choose is correct
         if ($(this).attr('data-relay') == 'b326b5062b2f0e69046810717534cb09') {
-            
+
             // count correct answer
             right++;
 
@@ -193,9 +197,9 @@ $(document).ready(function () {
             backgroundChoices('.choices-a', '#16da40');
 
         } else {
-            
-             // set background color to the wrong choices
-             backgroundChoices('.choices-a', '#f75454');
+
+            // set background color to the wrong choices
+            backgroundChoices('.choices-a', '#f75454');
 
         }
 
@@ -206,7 +210,7 @@ $(document).ready(function () {
         seconds = -1;
 
         setTimeout(function () {
-            
+
             // back to normal background color
             backgroundChoices('.choices-a', '#4759ff');
 
@@ -221,7 +225,7 @@ $(document).ready(function () {
 
         // determinig the if the choose is correct
         if ($(this).attr('data-relay') == 'b326b5062b2f0e69046810717534cb09') {
-            
+
             // count correct answer
             right++;
 
@@ -257,7 +261,7 @@ $(document).ready(function () {
 
         // determinig the if the choose is correct
         if ($(this).attr('data-relay') == 'b326b5062b2f0e69046810717534cb09') {
-            
+
             // count correct answer
             right++;
 
@@ -281,7 +285,7 @@ $(document).ready(function () {
 
             // back to normal background color
             backgroundChoices('.choices-c', '#4759ff');
-            
+
             // appear next question
             choose(i);
 
@@ -289,27 +293,27 @@ $(document).ready(function () {
     });
 
     // func for color background of your choices
-    function backgroundChoices(selector, color){
+    function backgroundChoices(selector, color) {
         $(selector).css({
-            'background-color': color 
+            'background-color': color
         });
     }
 
     // function for pointer events 
-    function pointerEvents(selector, pointer){
+    function pointerEvents(selector, pointer) {
         $(selector).css({
             'pointer-events': pointer
         });
     }
 
     // func for setting data
-    function dataRelaying(selector, data){
+    function dataRelaying(selector, data) {
         $(selector).attr('data-relay', data);
     }
 
     // func for counting modal
-    function countAppper(resultToExam){
-        
+    function countAppper(resultToExam) {
+
         $('.card').hide();
 
         $('.count').css({
@@ -321,17 +325,17 @@ $(document).ready(function () {
 
         setInterval(() => {
             $('.wait').text(rederectingTime);
-            if(rederectingTime==3){
-                window.location.href = "score.html"+window.location.search+"&result="+(resultToExam*10);
+            if (rederectingTime == 3) {
+                window.location.href = "score.html" + window.location.search + "&result=" + (resultToExam * 10);
             }
             rederectingTime++;
 
         }, 500);
-        
+
     }
 
     setTimeout(() => {
         pointerEvents('.play-btn', 'auto')
     }, 1500);
-    
+
 });
