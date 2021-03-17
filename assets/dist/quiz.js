@@ -1,19 +1,21 @@
 $(document).ready(function () {
 
     // async
-    $.ajax({
-        url: "../server.php?question=1",
-        type: "GET",
-        contentType: false,
-        processData: false,
-        success: function (data) {
-
-            var json = JSON.parse(data);
-            
-            // passing array
-            question_list = chooseRandom(json, 10);
-        }
-    });
+    function async(){
+        $.ajax({
+            url: "../server.php?question=1",
+            type: "GET",
+            contentType: false,
+            processData: false,
+            success: function (data) {
+    
+                var json = JSON.parse(data);
+                
+                // passing array
+                question_list = chooseRandom(json, 10);
+            }
+        });
+    }
 
     // func for shuffle array 
     const chooseRandom = (json, num = 1) => {
@@ -45,7 +47,7 @@ $(document).ready(function () {
 
     // funtion for modal
     $('.play-btn').on('click', function(){
-
+        async();
         // modal hide
         $('.modal').hide();
         
@@ -71,13 +73,13 @@ $(document).ready(function () {
             $('.timer-num').text(seconds);
         }
         else {
-            $('.choices-a, .choices-b, .choices-c').css({
+            $('.choices__container').css({
                 'background-color': '#f75454',
                 'pointer-events': 'none'
             });
             seconds = -1;
             setTimeout(function () {
-                $('.choices-a, .choices-b, .choices-c').css({
+                $('choices__container').css({
                     'background-color': '#4759ff',
                     'pointer-events': 'auto'
 
@@ -121,7 +123,6 @@ $(document).ready(function () {
             $('.question-text').text(question[num].question);
             $('.answer-a').text(question[num].a);
             $('.answer-b').text(question[num].b);
-            $('.answer-c').text(question[num].c);
             $('.answer-c').text(question[num].c);
             $('.from').text(num + 1);
             $('.to').text(question.length);
