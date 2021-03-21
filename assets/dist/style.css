@@ -161,7 +161,8 @@ body{
 .background-label > .color-label {
   background-color: #16da40;
   width: 20%;
-  height: 23px;
+  margin-left: -1px;
+  height: 19px;
   border-radius: 50px 0 0 50px;
 }
 

@@ -124,51 +124,95 @@ $(document).ready(function () {
                 'border-radius': '50px 0 0 50px'
             });
 
+            // var shuffleChoices = chooseRandom(question[num].choices, 2);
+            var choices = [];
+            choices.push(question[num].choices.a, question[num].choices.b, question[num].choices.c);
+            choices = chooseRandom(choices, 3);
+
             // setting up the question, choices, number of question
             $('.question-text').text(question[num].question);
-            $('.answer-a').text(question[num].a);
-            $('.answer-b').text(question[num].b);
-            $('.answer-c').text(question[num].c);
-            $('.answer-c').text(question[num].c);
+            $('.answer-a').text(choices[0]);
+            $('.answer-b').text(choices[1]);
+            $('.answer-c').text(choices[2]);
             $('.from').text(num + 1);
             $('.to').text(question.length);
 
             // determinig if the correct answer is a
             if (question[num].correct == 'a') {
 
-                // setting data
-                dataRelaying('.choices-a', 'b326b5062b2f0e69046810717534cb09')
+                if(question[num].choices.a == choices[0]){
+                    dataRelaying('.choices-a', 'b326b5062b2f0e69046810717534cb09')    
+                }
+                else{
+                    dataRelaying('.choices-a', '');
+                }
 
-            } else {
+                if(question[num].choices.a == choices[1]){
+                    dataRelaying('.choices-b', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-b', '');
+                }
 
-                // setting data to empty
-                dataRelaying('.choices-a', '');
+                if(question[num].choices.a == choices[2]){
+                    dataRelaying('.choices-c', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-c', '');
+                }
+
 
             }
 
             // determinig if the correct answer is b
             if (question[num].correct == 'b') {
 
-                // setting data
-                dataRelaying('.choices-b', 'b326b5062b2f0e69046810717534cb09')
+                if(question[num].choices.b == choices[0]){
+                    dataRelaying('.choices-a', 'b326b5062b2f0e69046810717534cb09')    
+                }
+                else{
+                    dataRelaying('.choices-a', '');
+                }
 
-            } else {
+                if(question[num].choices.b == choices[1]){
+                    dataRelaying('.choices-b', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-b', '');
+                }
 
-                // setting data to empty
-                dataRelaying('.choices-b', '');
-            }
+                if(question[num].choices.b == choices[2]){
+                    dataRelaying('.choices-c', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-c', '');
+                }
+
+            } 
 
             // determinig if the correct answer is c
             if (question[num].correct == 'c') {
 
-                // setting data
-                dataRelaying('.choices-c', 'b326b5062b2f0e69046810717534cb09')
+                if(question[num].choices.c == choices[0]){
+                    dataRelaying('.choices-a', 'b326b5062b2f0e69046810717534cb09')    
+                }
+                else{
+                    dataRelaying('.choices-a', '');
+                }
 
-            }
-            else {
+                if(question[num].choices.c == choices[1]){
+                    dataRelaying('.choices-b', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-b', '');
+                }
 
-                // setting data to empty
-                dataRelaying('.choices-c', '');
+                if(question[num].choices.c == choices[2]){
+                    dataRelaying('.choices-c', 'b326b5062b2f0e69046810717534cb09') 
+                }
+                else{
+                    dataRelaying('.choices-c', '');
+                }
 
             }
 
