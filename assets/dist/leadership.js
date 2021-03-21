@@ -8,10 +8,14 @@ $(document).ready(function () {
         })
 
         var html = ''
+        var name = '';
 
         storedScores.forEach((element, index) => {
+            
+            name = element.user;
+
             if (index <= 3) {
-                html += '<li style="list-style:none; font-size: 30px;  text-align:center">' + element.user + ' - ' + element.score + '%</li>';
+                html += '<li style="list-style:none; font-size: 30px;  text-align:center">' + name.replace(/%20/g,' ') + ' - ' + element.score + '%</li>';
                 return false;
             }
         });

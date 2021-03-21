@@ -1,9 +1,7 @@
 $(document).ready(function () {
 
-    // // async
-    // function async(){
-
-    // }
+    $('.loader-container').html('<div class="loader11"></div>');
+    $('.modal-loading').hide();
 
     // func for shuffle array 
     const chooseRandom = (json, num = 1) => {
@@ -28,7 +26,6 @@ $(document).ready(function () {
     let seconds = 0;
     var questionPerTime = 29;
     var i = 0;
-    let timer;
     let right = 0;
 
     // $('.count').hide();
@@ -41,6 +38,11 @@ $(document).ready(function () {
             type: "GET",
             contentType: false,
             processData: false,
+            beforeSend: function(){
+                $('.modal-loading').show();
+                // modal hide
+                $('.modal').hide();
+            },
             success: function (data) {
 
                 var json = JSON.parse(data);
@@ -48,8 +50,7 @@ $(document).ready(function () {
                 // passing array
                 question_list = chooseRandom(json, 10);
 
-                // modal hide
-                $('.modal').hide();
+                $('.modal-loading').hide();
 
                 // displaying question
                 choose(i);
@@ -334,8 +335,8 @@ $(document).ready(function () {
 
     }
 
-    setTimeout(() => {
+    // setTimeout(() => {
         pointerEvents('.play-btn', 'auto')
-    }, 1500);
+    // }, 500);
 
 });
